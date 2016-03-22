@@ -14,41 +14,55 @@ class LoginViewController: UIViewController
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
-    
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
     }
     
-    @IBAction func onSignIn(sender: AnyObject)
+    private func showAlert(title: String, message: String)
     {
-        PFUser.logInWithUsernameInBackground(usernameField.text!, password: passwordField.text!) { (user: PFUser?, error: NSError?) -> Void in
-            
-            if user != nil
-            {
-                print("logged in")
-            }
-        }
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Cancel) {_ in /*Some Code to Execute*/}
+        alertView.addAction(action)
+        self.presentViewController(alertView, animated: true, completion: nil)
     }
     
+    @IBAction func onSignIn(sender: AnyObject)
+    {
+        
+        ParseClient.login((usernameField.text!, password: passwordField.text!), success: { (user: PFUser?) -> () in
+            
+            self.performSegueWithIdentifier("loginSegue", sender: self)
+            
+            }) { (error: NSError?) -> () in
+                
+                self.showAlert("Error", message: (error?.localizedDescription)!)
+
+            }
+    }
     
     @IBAction func onSignUp(sender: AnyObject)
     {
-        let newUser = PFUser()
-        
-        newUser.username = usernameField.text
-        newUser.password = passwordField.text
-        
-        newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            if success
-            {
-                print("Created a user")
-            }
-            else
-            {
-                print(error?.localizedDescription)
-            }
+        if usernameField.text! == ""
+        {
+            self.showAlert("Error", message: "Username is required")
+            return
         }
+        else if passwordField.text! == ""
+        {
+            self.showAlert("Error", message: "Password is required")
+            return
+        }
+        
+        ParseClient.signUp((usernameField.text!, password: passwordField.text!), success: { (user: PFUser?) -> () in
+            
+            self.performSegueWithIdentifier("loginSegue", sender: self)
+            
+            }) { (error: NSError?) -> () in
+                
+            self.showAlert("Error", message: (error?.localizedDescription)!)
+        }
+        
+        
     }
 }

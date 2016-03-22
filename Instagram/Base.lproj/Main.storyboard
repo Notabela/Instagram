@@ -17,30 +17,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PAe-UH-ELn">
-                                <rect key="frame" x="74" y="61" width="172" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username or Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PAe-UH-ELn">
+                                <rect key="frame" x="64" y="105" width="192" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aed-fT-K1x">
-                                <rect key="frame" x="64" y="117" width="192" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aed-fT-K1x">
+                                <rect key="frame" x="64" y="184" width="192" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rz-Rs-2Rf">
-                                <rect key="frame" x="137" y="175" width="47" height="30"/>
+                                <rect key="frame" x="137" y="248" width="50" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Sign In"/>
+                                <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="onSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ge-Sc-PWE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZx-CN-tL5">
-                                <rect key="frame" x="133" y="220" width="55" height="30"/>
+                                <rect key="frame" x="135" y="295" width="52" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Sign Up"/>
+                                <state key="normal" title="Sign up"/>
                                 <connections>
                                     <action selector="onSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hBa-AM-1mx"/>
                                 </connections>
@@ -52,11 +52,197 @@
                     <connections>
                         <outlet property="passwordField" destination="aed-fT-K1x" id="Ty1-Xg-sbf"/>
                         <outlet property="usernameField" destination="PAe-UH-ELn" id="KUv-hS-MZ0"/>
+                        <segue destination="61G-Mg-RcZ" kind="modal" identifier="loginSegue" id="oYF-Hd-y04"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="232" y="344"/>
+            <point key="canvasLocation" x="19" y="337"/>
+        </scene>
+        <!--Capture View Controller-->
+        <scene sceneID="58k-oA-7Xz">
+            <objects>
+                <viewController id="9YB-SV-TmD" customClass="CaptureViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R8d-fV-JZJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wL5-Tf-fwV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rka-8z-jJG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Capture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lap-5w-8Us">
+                                <rect key="frame" x="99" y="273" width="62" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="O4T-xj-EMP">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="nBD-iF-ABj">
+                            <connections>
+                                <action selector="onLogout:" destination="9YB-SV-TmD" id="jWa-jf-NWv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yEK-d4-din" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="917" y="241"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="zeo-MM-0LF">
+            <objects>
+                <viewController id="MK8-uN-3V3" customClass="ProfileViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dx4-o6-5pj"/>
+                        <viewControllerLayoutGuide type="bottom" id="fwS-CH-uqb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vtX-ju-UuR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Submit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhm-3m-4dn">
+                                <rect key="frame" x="140" y="364" width="55" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZA7-EN-ifw">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="sp5-nH-Kni">
+                            <connections>
+                                <action selector="onLogout:" destination="MK8-uN-3V3" id="VYO-BW-7eC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rbI-jL-7cE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="889" y="-532"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="Km8-m4-eGM">
+            <objects>
+                <viewController id="Olu-Be-T3W" customClass="HomeViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lwL-ED-d53"/>
+                        <viewControllerLayoutGuide type="bottom" id="6b6-Y5-3DR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4fx-z0-Tl6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HOme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dp9-mJ-hWY">
+                                <rect key="frame" x="103" y="237" width="49" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wAg-Ne-8KE">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="p89-3P-yCQ">
+                            <connections>
+                                <action selector="onLogout:" destination="Olu-Be-T3W" id="oYq-SU-hZg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D6B-Qc-CTL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="871" y="1036"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="rxh-72-4Ik">
+            <objects>
+                <tabBarController storyboardIdentifier="postTabBar" automaticallyAdjustsScrollViewInsets="NO" id="61G-Mg-RcZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="7cD-0X-pS2">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="aAE-Vb-jMq" kind="relationship" relationship="viewControllers" id="i7G-h1-EjI"/>
+                        <segue destination="xZ3-WU-3cQ" kind="relationship" relationship="viewControllers" id="743-pI-NSy"/>
+                        <segue destination="qmR-4O-Jsk" kind="relationship" relationship="viewControllers" id="iYN-Mc-VFX"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hpq-1N-fyp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="413" y="325"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="gEW-mI-i8P">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qmR-4O-Jsk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" id="5Zk-ga-pbE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="whz-qB-zaC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MK8-uN-3V3" kind="relationship" relationship="rootViewController" id="IOZ-ea-bX4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XJR-lJ-0Vm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="810" y="-532"/>
+        </scene>
+        <!--Capture-->
+        <scene sceneID="IIw-Qt-UaI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xZ3-WU-3cQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Capture" id="uQA-6L-jhF"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WQf-yA-lhd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9YB-SV-TmD" kind="relationship" relationship="rootViewController" id="v61-g2-2rz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vuZ-1K-zGN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="849" y="241"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="pRe-zA-jqX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aAE-Vb-jMq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" id="MGA-9a-Tfp"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4qu-85-dbe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Olu-Be-T3W" kind="relationship" relationship="rootViewController" id="Hfp-3e-2DI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0cc-O3-Rf0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="810" y="1060"/>
         </scene>
     </scenes>
 </document>

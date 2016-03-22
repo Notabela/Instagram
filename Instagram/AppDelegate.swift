@@ -19,11 +19,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //Initialize Parse
-        Parse.initializeWithConfiguration(ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
-            configuration.applicationId = "com.notabela.belagram"
-            configuration.clientKey = "Parker@18***"
-            configuration.server = "https://belagram.herokuapp.com/parse"
-        }))
+        ParseClient.Authenticate()
+        
+        //Check for existing User
+        if PFUser.currentUser() != nil
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("postTabBar")
+            window?.rootViewController = vc
+        }
+        
+        //Add Listener
+        NSNotificationCenter.defaultCenter().addObserverForName("didLogOut", object: nil, queue: NSOperationQueue.mainQueue()) { (NSNotification) -> Void in
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateInitialViewController()
+            self.window?.rootViewController = vc
+        }
         
         return true
     }
