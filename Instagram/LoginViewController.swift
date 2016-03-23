@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class LoginViewController: UIViewController
 {
@@ -29,14 +30,18 @@ class LoginViewController: UIViewController
     
     @IBAction func onSignIn(sender: AnyObject)
     {
+        let progressBar = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressBar.opacity = 0
         
         ParseClient.login((usernameField.text!, password: passwordField.text!), success: { (user: PFUser?) -> () in
             
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
             self.performSegueWithIdentifier("loginSegue", sender: self)
             
             }) { (error: NSError?) -> () in
-                
-                self.showAlert("Error", message: (error?.localizedDescription)!)
+            
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+            self.showAlert("Error", message: (error?.localizedDescription)!)
 
             }
     }
@@ -54,12 +59,17 @@ class LoginViewController: UIViewController
             return
         }
         
+        let progressBar = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressBar.opacity = 0
+        
         ParseClient.signUp((usernameField.text!, password: passwordField.text!), success: { (user: PFUser?) -> () in
             
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
             self.performSegueWithIdentifier("loginSegue", sender: self)
             
             }) { (error: NSError?) -> () in
-                
+            
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
             self.showAlert("Error", message: (error?.localizedDescription)!)
         }
         

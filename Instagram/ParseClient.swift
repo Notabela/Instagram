@@ -38,10 +38,12 @@ class ParseClient: Parse
     
     class func signUp(parameters: (username: String, password: String), success: (PFUser?) -> (), failure: (NSError?) -> () )
     {
+        
         let newUser = PFUser()
         
         newUser.username = parameters.username
         newUser.password = parameters.password
+        newUser.setObject("Me", forKey: "test")
         
         newUser.signUpInBackgroundWithBlock { (signedUp: Bool, error: NSError?) -> Void in
             
@@ -55,6 +57,8 @@ class ParseClient: Parse
             }
         }
     }
+    
+
     
     class func logout()
     {

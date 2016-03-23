@@ -5,5 +5,7 @@
 
 target 'Instagram' do
     pod 'Parse', :git => 'https://github.com/ParsePlatform/Parse-SDK-iOS-OSX.git'
+    pod 'ParseUI'
+    pod 'MBProgressHUD'
 end
 
