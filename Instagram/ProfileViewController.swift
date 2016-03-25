@@ -55,6 +55,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         fetchPosts()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        fetchPosts()
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("profileCell") as! postCell
         cell.post = posts![indexPath.row]
